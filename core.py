@@ -16,7 +16,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.title('Crypto Price At Date')
 
-    option = st.selectbox( 'Which coin?', ('ETH', 'BTC', 'ADA'))
+    option = st.selectbox( 'Which coin?', app.symbols(), index=0)
 
     date_value = st.date_input('Enter the date', st.session_state['date_value'])
 

@@ -35,6 +35,12 @@ def value_of_crypto_at(crypto, date_obj: datetime):
 def amount_in_usdt(amount, price):
     return amount * price
 
+def symbols():
+    client = ClientSpot()
+    exchange_info = client.exchange_info()
+    return [symbol['baseAsset'] for symbol in exchange_info['symbols'] if symbol['quoteAsset'] == 'USDT']
+
+
 # # Example usage
 # crypto_symbol = "ETH"  # Change to the desired cryptocurrency symbol
 # desired_date = "2024-04-19 22:15:05"  # Change to the desired date and time
