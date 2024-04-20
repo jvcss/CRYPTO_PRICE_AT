@@ -4,7 +4,8 @@ import app
 
 st.set_page_config(
     page_title="Crypto Price At Date",
-    layout="wide"
+    layout="wide",
+    page_icon='fav.png'
     )
 
 if 'date_value' not in st.session_state:
@@ -35,12 +36,20 @@ with col2:
     try:
         crypto_value = app.value_of_crypto_at(option, datetime_value)
         st.markdown('# Result', help='Value based on Binance API')
+
+        st.markdown('<br>', unsafe_allow_html=True)
         
         st.markdown(f'### Price was `${crypto_value}` USDT')
 
+        st.markdown('<br>', unsafe_allow_html=True)
+
         st.markdown(f'### You had `{st.session_state["amount"]:.8f} {option}`  at  *{datetime_value}*')
+
+        st.markdown('<br>', unsafe_allow_html=True)
         
         st.markdown(f'### Equivalent to `${app.amount_in_usdt(st.session_state["amount"], crypto_value):.2f}` USDT')
-        st.balloons()
+
+        if clicked:
+            st.balloons()
     except Exception as e:
         st.error(f'Error: {e}')
