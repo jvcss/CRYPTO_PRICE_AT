@@ -2,7 +2,10 @@ from datetime import datetime, timedelta
 import streamlit as st
 import app
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="Crypto Price At Date",
+    layout="wide"
+    )
 
 if 'date_value' not in st.session_state:
     st.session_state['date_value'] = datetime.now().date()
@@ -14,7 +17,7 @@ if 'amount' not in st.session_state:
 col1, col2 = st.columns(2)
 
 with col1:
-    st.title('Crypto Price At Date')
+    st.title('Crypto Price At Specific Date')
 
     option = st.selectbox( 'Which coin?', app.symbols(), index=0)
 
