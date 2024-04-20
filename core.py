@@ -35,7 +35,7 @@ with col2:
         
         st.markdown(f'### Price was `${crypto_value}` USDT')
 
-        st.markdown(f'### You had `{st.session_state["amount"]:.8f} {option}`  at  {datetime_value}')
+        st.markdown(f'### You had `{st.session_state["amount"]:.8f} {option}`  at  *{datetime_value}*')
         
         st.markdown(f'### Equivalent to `${app.amount_in_usdt(st.session_state["amount"], crypto_value):.2f}` USDT')
         st.balloons()
