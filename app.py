@@ -1,14 +1,14 @@
 import os
 from binance.spot import Spot as ClientSpot
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 os.system('cls' if os.name == 'nt' else 'clear')
 
-def value_of_crypto_at(crypto, date_str):
+def value_of_crypto_at(crypto, date_obj: datetime):
     """
     Returns the value of the crypto currency at the given date and time
     """
     # Convert date string to datetime object
-    date_obj = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
+    #date_obj = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
 
     # Initialize Binance client
     client = ClientSpot()
@@ -32,13 +32,16 @@ def value_of_crypto_at(crypto, date_str):
     else:
         return None  # Data not available
 
-# Example usage
-crypto_symbol = "ETH"  # Change to the desired cryptocurrency symbol
-desired_date = "2024-04-19 22:15:05"  # Change to the desired date and time
-crypto_value = value_of_crypto_at(crypto_symbol, desired_date)
+def amount_in_usdt(amount, price):
+    return amount * price
 
-amount = 0.04263593
+# # Example usage
+# crypto_symbol = "ETH"  # Change to the desired cryptocurrency symbol
+# desired_date = "2024-04-19 22:15:05"  # Change to the desired date and time
+# crypto_value = value_of_crypto_at(crypto_symbol, desired_date)
 
-print(f"The value of {crypto_symbol.upper()} at {desired_date} was ${crypto_value:.2f}" if crypto_value is not None else "Data not available")
+# amount = 0.04263593
 
-print(f'You had USD ${amount * crypto_value:.2f} at {desired_date}')
+# print(f"The value of {crypto_symbol.upper()} at {desired_date} was ${crypto_value:.2f}" if crypto_value is not None else "Data not available")
+
+# print(f'You had USD ${amount * crypto_value:.2f} at {desired_date}')
